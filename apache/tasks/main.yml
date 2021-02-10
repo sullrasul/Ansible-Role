@@ -1,0 +1,27 @@
+---
+- name: Update apt
+  apt:
+    update_cache: yes
+
+- name: Install Apache
+  apt:
+    name: apache2
+    state: latest
+
+- name: Create custom document root
+  file:
+    path: /var/www/html 
+    state: directory 
+    owner: sre
+    group: users
+
+- name: Set up HTML file
+  copy:
+    src: index.html 
+    dest: /var/www/html/index.html 
+    owner: sre 
+    group: users 
+    mode: 644
+
+ # notify: 
+ #  restart apache
