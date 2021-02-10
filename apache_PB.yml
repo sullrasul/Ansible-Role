@@ -1,0 +1,7 @@
+---
+- hosts: sectigo
+  remote_user: sre
+  become: true
+  roles:
+    - apache
+...
